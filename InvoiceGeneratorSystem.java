@@ -136,4 +136,3 @@ public class InvoiceGeneratorSystem {
         return consumption * ratePerKWh;
     }
 }
-
