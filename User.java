@@ -16,7 +16,8 @@ public abstract class User {
         return username;
     }
 
-    public String getPassword() {
+    // Using protected to allow subclasses to access the password
+    protected String getPassword() {
         return password;
     }
 
