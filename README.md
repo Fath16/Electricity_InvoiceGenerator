@@ -10,7 +10,7 @@
 - [Abstraction](#abstraction)
 - [Exception Handling](#exception-handling)
 - [File I/O](#file-i/o)
-- [Anonymous Inner Class / Functional Interface / Lambda Expression](#functional-interface)
+- [Anonymous Inner Class / Functional Interface / Lambda Expression](-functional-interface)
   
 
 
