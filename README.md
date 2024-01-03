@@ -42,7 +42,7 @@ data.<br>
 - Exception handling is incorporated into the project with the readIntFromScanner method in the InvoiceGeneratorSystem class.<br>
 - It catches InputMismatchException to ensure valid user input.<br>
 
-**File I/O** <br><br>
+###File I/O <br><br>
  File I/O is utilized in the InvoiceGeneratorSystem class to store and retrieve invoice information in/from a file (invoice_history.txt).<br>
 
 **Anonymous Inner Class / Functional Interface / Lambda Expression** <br><br>
