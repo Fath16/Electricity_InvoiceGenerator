@@ -1,7 +1,9 @@
 # Electricity_InvoiceGenerator
-**Introduction** <br>
+*Introduction* <br>
 Our purpose of an Electricity Invoice Generator is to facilitate the calculation of total invoice amounts, save invoices to a file, view invoices, view invoice history and generation of invoices for electricity consumption. This system automates the process of computing the total amount owed based on the amount of electricity used by a client.
 
+## Table of Contents
+- [Barista Class](#barista-class)
 **Classes and Objects** <br>
 1. Client and Staff: this class extends the user class to represent the user type of invoice system. it contains username and password in each class to identify the user.<br>
 2. User: this abstract class represents a generic user that contains username and password fields. <br>
