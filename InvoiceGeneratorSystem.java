@@ -1,15 +1,16 @@
 package Electricity_InvoiceGenerator;
+
 import java.io.*;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-//Anonymous Inner Class
 public class InvoiceGeneratorSystem {
     private Map<String, Staff> staffMap = new HashMap<>();
     private Map<String, Client> clientMap = new HashMap<>();
     private Map<String, Invoice> invoiceMap = new HashMap<>();
 
+    // Functional Interface
     @FunctionalInterface
     interface LoginProcess {
         boolean login(Scanner scanner, Map<String, ? extends User> userMap);
@@ -22,6 +23,15 @@ public class InvoiceGeneratorSystem {
     }
 
     private void initializeUsers() {
+        Staff s1 = new Staff("fath", "123");
+        Staff s2 = new Staff("staff2", "123");
+        staffMap.put(s1.getUsername(), s1);
+        staffMap.put(s2.getUsername(), s2);
+
+        Client c1 = new Client("C001", "client1", "456");
+        Client c2 = new Client("C002", "client2", "456");
+        clientMap.put(c1.getUsername(), c1);
+        clientMap.put(c2.getUsername(), c2);
     }
 
     private void runSystem() {
@@ -32,8 +42,10 @@ public class InvoiceGeneratorSystem {
             System.out.println("2. Client Login");
             System.out.println("3. Exit");
             System.out.print("Select an option: ");
-            int choice = scanner.nextInt();
 
+            int choice = readIntFromScanner(scanner);
+            
+            // Functional Interface
             LoginProcess loginProcess;
 
             switch (choice) {
@@ -88,18 +100,16 @@ public class InvoiceGeneratorSystem {
         double consumption = scanner.nextDouble();
 
         double totalAmount = calculateTotalAmount(consumption);
+
         Invoice invoice = new Invoice(clientUsername, totalAmount);
         invoiceMap.put(clientUsername, invoice);
-
         saveInvoiceToFile(invoice);
-
         System.out.println("Invoice generated successfully.");
     }
 
     private void saveInvoiceToFile(Invoice invoice) {
         try (FileWriter fileWriter = new FileWriter("invoice_history.txt", true);
              PrintWriter printWriter = new PrintWriter(fileWriter)) {
-
             printWriter.println(invoice);
         } catch (IOException e) {
             e.printStackTrace();
@@ -115,7 +125,6 @@ public class InvoiceGeneratorSystem {
         } else {
             System.out.println("No invoice found for the client.");
         }
-
         viewInvoiceHistory();
     }
 
@@ -134,5 +143,21 @@ public class InvoiceGeneratorSystem {
     private double calculateTotalAmount(double consumption) {
         double ratePerKWh = 0.10;
         return consumption * ratePerKWh;
+    }
+
+    // Static method demonstrating polymorphism through method overloading
+    public static void printUserInfo(User user) {
+        System.out.println(user); // Calls toString method (polymorphism)
+    }
+
+    // Exception handling for user input
+    private int readIntFromScanner(Scanner scanner) {
+        try {
+            return scanner.nextInt();
+        } catch (java.util.InputMismatchException e) {
+            System.out.println("Invalid input. Please enter a valid integer.");
+            scanner.nextLine(); // Consume the invalid input
+            return readIntFromScanner(scanner); // Retry reading
+        }
     }
 }
