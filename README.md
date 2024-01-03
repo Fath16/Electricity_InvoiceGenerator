@@ -9,7 +9,7 @@
 - [Encapsulation](#encapsulation)
 - [Abstraction](#abstraction)
 - [Exception Handling](#exception-handling)
-- [File I/O](#file-i/o)
+- [File I/O](#file-io)
 - [Anonymous Inner Class / Functional Interface / Lambda Expression](#functional-interface)
   
 
