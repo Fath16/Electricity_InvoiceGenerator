@@ -10,12 +10,10 @@
 - [Abstraction](#abstraction)
 - [Exception Handling](#exception-handling)
 - [File I/O](#file-i/o)
-- [Anonymous Inner Class / Functional Interface / Lambda Expression](-functional-interface)
+- [Anonymous Inner Class / Functional Interface / Lambda Expression](#functional-interface)
   
 
 
- 
- 
 **Classes and Objects** <br>
 - Client and Staff: this class extends the user class to represent the user type of invoice system. it contains username and password in each class to identify the user.<br>
 - User: this abstract class represents a generic user that contains username and password fields. <br>
@@ -32,7 +30,7 @@
 - The Client and Staff classes demonstrate method overriding with toString() and 
 getUserType().<br>
 
-**Encapsulation** <br>
+**Encapsulation** <br><br>
  Encapsulation is achieved by using private access modifiers for the username and password fields in the User class, controlling access to sensitive  
 data.<br>
 
@@ -44,10 +42,10 @@ data.<br>
 - Exception handling is incorporated into the project with the readIntFromScanner method in the InvoiceGeneratorSystem class.<br>
 - It catches InputMismatchException to ensure valid user input.<br>
 
-**File I/O** <br>
+**File I/O** <br><br>
  File I/O is utilized in the InvoiceGeneratorSystem class to store and retrieve invoice information in/from a file (invoice_history.txt).<br>
 
-**Anonymous Inner Class / Functional Interface / Lambda Expression** <br>
+**Anonymous Inner Class / Functional Interface / Lambda Expression** <br><br>
  A functional interface named LoginProcess is used with lambda expressions in the runSystem method to provide a flexible and concise way to handle 
 login processes.
 
