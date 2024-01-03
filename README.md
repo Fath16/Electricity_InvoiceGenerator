@@ -4,7 +4,7 @@ Our purpose of an Electricity Invoice Generator is to facilitate the calculation
 
 ## Table of Contents
 - [Classes and Objects](#barista-class)
- - [File I/O](#file-io)
+ - [File I/O]
  
 **Classes and Objects** <br>
 1. Client and Staff: this class extends the user class to represent the user type of invoice system. it contains username and password in each class to identify the user.<br>
