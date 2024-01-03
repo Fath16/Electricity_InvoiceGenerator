@@ -45,7 +45,7 @@ data.<br>
 ### File I/O 
  File I/O is utilized in the InvoiceGeneratorSystem class to store and retrieve invoice information in/from a file (invoice_history.txt).<br>
 
-### Anonymous Inner Class / Functional Interface / Lambda Expression 
+### Anonymous Inner Class / Functional Interface / Lambda Expression
  A functional interface named LoginProcess is used with lambda expressions in the runSystem method to provide a flexible and concise way to handle 
 login processes.
 
