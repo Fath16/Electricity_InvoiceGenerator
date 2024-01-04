@@ -31,8 +31,7 @@
 getUserType().<br>
 
 ### Encapsulation 
- Encapsulation is achieved by using private access modifiers for the username and password fields in the User class, controlling access to sensitive  
-data.<br>
+ Encapsulation is achieved by using private access modifiers for the username and password fields in the User class, controlling access to sensitive data.<br>
 
 ### Abstraction 
 - Abstraction is implemented through the creation of an abstract class User, which contains an abstract method getUserType().<br>
