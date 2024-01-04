@@ -22,12 +22,12 @@
 
 ### Inheritance 
 - The Client and Staff classes inherit from the User class, demonstrating the inheritance principle. <br>
-- The Client class overrides the toString() method, while the Staff class overrides the getUserType() method.
+- The Client class overrides the toString() and equal() method, while the Staff class overrides the getUserType() method.
 
 ### Polymorphism 
 - Polymorphism is showcased through method overloading and overriding. <br>
 - The Client class features method overloading with printUserInfo(). <br>
-- The Client and Staff classes demonstrate method overriding with toString() and 
+- The Client and Staff classes demonstrate method overriding with toString(), equal() and 
 getUserType().<br>
 
 ### Encapsulation 
