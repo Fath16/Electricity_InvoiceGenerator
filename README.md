@@ -39,15 +39,16 @@ The project includes several classes:
 ### Inheritance 
 **Superclass and Subclass**
 In the ElectricityInvoiceGenerator code, inheritance is demonstrated through the User, Staff, and Client classes. User serves as the superclass, and Staff and Client are subclasses inheriting  from User. 
-  public class Staff extends User {
-      public Staff(String username, String password) {
-          super(username, password);
-      }
-      @Override
-      public String getUserType() {
-          return "Staff";
-      }
-  }
+
+    public class Staff extends User {
+        public Staff(String username, String password) {
+            super(username, password);
+        }
+        @Override
+        public String getUserType() {
+            return "Staff";
+        }
+    }
 
 ### Polymorphism 
 - Polymorphism is showcased through method overloading and overriding. <br>
