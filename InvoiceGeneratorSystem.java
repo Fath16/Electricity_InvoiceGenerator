@@ -24,16 +24,17 @@ public class InvoiceGeneratorSystem {
 
     private void initializeUsers() {
         Staff s1 = new Staff("fath", "123");
-        Staff s2 = new Staff("staff2", "123");
+        Staff s2 = new Staff("vitou", "123");
         staffMap.put(s1.getUsername(), s1);
         staffMap.put(s2.getUsername(), s2);
 
-        Client c1 = new Client("C001", "client1", "456");
-        Client c2 = new Client("C002", "client2", "456");
+        Client c1 = new Client("C001", "rassa", "456");
+        Client c2 = new Client("C002", "panha", "456");
         clientMap.put(c1.getUsername(), c1);
         clientMap.put(c2.getUsername(), c2);
     }
 
+    // Replace the existing code in the runSystem method with this updated code
     private void runSystem() {
         Scanner scanner = new Scanner(System.in);
 
@@ -44,42 +45,14 @@ public class InvoiceGeneratorSystem {
             System.out.print("Select an option: ");
 
             int choice = readIntFromScanner(scanner);
-            
-            // Functional Interface
-            LoginProcess loginProcess;
 
-            switch (choice) {
-                case 1:
-                    loginProcess = (inputScanner, userMap) -> {
-                        System.out.print("Enter staff username: ");
-                        String username = inputScanner.next();
-                        System.out.print("Enter staff password: ");
-                        String password = inputScanner.next();
-
-                        Staff staff = (Staff) userMap.get(username);
-                        return staff != null && staff.getPassword().equals(password);
-                    };
-                    break;
-                case 2:
-                    loginProcess = (inputScanner, userMap) -> {
-                        System.out.print("Enter client username: ");
-                        String username = inputScanner.next();
-                        System.out.print("Enter client password: ");
-                        String password = inputScanner.next();
-
-                        Client client = (Client) userMap.get(username);
-                        return client != null && client.getPassword().equals(password);
-                    };
-                    break;
-                case 3:
-                    System.out.println("Exiting program. Goodbye!");
-                    System.exit(0);
-                default:
-                    System.out.println("Invalid option. Please try again.");
-                    continue;
+            if (choice == 3) {
+                System.out.println("Exiting program. Goodbye!");
+                System.exit(0);
             }
 
-            boolean isLoggedIn = loginProcess.login(scanner, choice == 1 ? staffMap : clientMap);
+            boolean isLoggedIn = Authentication.authenticateUser(scanner, choice, (choice == 1) ? staffMap : clientMap);
+
             if (isLoggedIn) {
                 System.out.println((choice == 1 ? "Staff" : "Client") + " login successful.");
                 if (choice == 1) {
@@ -93,6 +66,7 @@ public class InvoiceGeneratorSystem {
         }
     }
 
+    
     private void generateInvoice(Scanner scanner) {
         System.out.print("Enter client username: ");
         String clientUsername = scanner.next();
