@@ -12,6 +12,7 @@
 - [Exception Handling](#exception-handling)
 - [File I/O](#file-io)
 - [Anonymous Inner Class / Functional Interface / Lambda Expression](#anonymous-inner-class--functional-interface--lambda-expression)
+- Static methods(#static-methods)
 
 ### Features
 **1. Authentication**<br/>
@@ -49,30 +50,149 @@ In the ElectricityInvoiceGenerator code, inheritance is demonstrated through the
             return "Staff";
         }
     }
+Staff inherits the properties and methods of the User class and provides its implementation of the getUserType method.
+
+**Constructor**
+In the User class, a parameterized constructor is defined:
+
+    public User(String username, String password) {
+        this.username = username;
+        this.password = password;
+    }
+This constructor initializes the username and password fields when a User object is created. The Staff and Client classes use constructor chaining by invoking the superclass constructor using super(username, password);.
+
 
 ### Polymorphism 
-- Polymorphism is showcased through method overloading and overriding. <br>
-- The Client class features method overloading with printUserInfo(). <br>
-- The Client and Staff classes demonstrate method overriding with toString(), equal() and 
-getUserType().<br>
+**Method Overriding**
+- In the ElectricityInvoiceGenerator code, method overloading is demonstrated in the calculateTotalAmount method:
+
+      private double calculateTotalAmount(double consumption) {
+          double ratePerKWh = 0.10;
+          return consumption * ratePerKWh;
+      }
+      
+      private double calculateTotalAmount(double consumption, double discount) {
+          double ratePerKWh = 0.10;
+          return (consumption * ratePerKWh) - discount;
+      }
+  This indicates the calculateTotalAmount method is overloaded to accommodate an additional discount parameter, providing flexibility for different scenarios.
+- In the User class, the toString method is overridden in the Client class:
+
+      public class User {
+          
+          @Override
+          public String toString() {
+              return "User: " + username;
+          }
+      }
+- In the Client class:
+
+      public class Client extends User {
+      
+          @Override
+          public String toString() {
+              return super.toString() + ", ClientID: " + clientID;
+          }
+      }
+  This demonstrates polymorphism through method overriding, allowing each subclass to provide its implementation of the toString method.
 
 ### Encapsulation 
- Encapsulation is achieved by using private access modifiers for the username and password fields in the User class, controlling access to sensitive data.<br>
+**Access Modifiers**
+- Public: Public access modifiers are used for methods that need to be accessed from any other class or package. For example, the getUsername method in the User class:
+  
+      public String getUsername() {
+       return username;
+      }
 
+- Private: Private access modifiers are applied to fields and methods that should only be accessible within the same class. For example, in the Invoice class:
+
+      private String clientUsername;
+      private double totalAmount;
+      
+      private void saveInvoiceToFile(Invoice invoice) {
+       
+      }
 ### Abstraction 
-- Abstraction is implemented through the creation of an abstract class User, which contains an abstract method getUserType().<br>
-- Subclasses (Client and Staff) provide concrete implementations of this method.<br>
+- Abstract Class (User):
+  The class User is declared as an abstract class, which means it cannot be instantiated on its own. It serves as a base class for more specific user types like Staff and Client. The User class   contains abstract methods, and it also provides a common structure for its subclasses:
+
+      public static abstract class User {
+          private String username;
+          private String password;
+      
+          // Abstract method
+          public abstract String getUserType();
+      
+      }
+   Abstract Method (getUserType): The method getUserType is declared as abstract in the User class. This method is meant to be implemented by its subclasses (Staff and Client). Abstract methods    do not have an implementation in the abstract class and must be overridden by concrete subclasses.
+- Overriding Abstract Method (getUserType in Staff and Client):
+  Both Staff and Client classes, which are subclasses of User, provide their own implementations for the abstract method getUserType:
+  
+      public class Staff extends User {
+      
+          @Override
+          public String getUserType() {
+              return "Staff";
+          }
+      }
+  
+      public class Staff extends User {
+      
+          @Override
+          public String getUserType() {
+              return "Staff";
+          }
+      }
 
 ### Exception Handling
-- Exception handling is incorporated into the project with the readIntFromScanner method in the InvoiceGeneratorSystem class.<br>
-- It catches InputMismatchException to ensure valid user input.<br>
+In the ElectricityInvoiceGenerator code,exception handling ensures graceful error management:
+- File not found issue is addressed using try and catch blocks.
+- Mistyped input issues are handled using NumberFormatException in various input scenarios.
+
+      private int readIntFromScanner(Scanner scanner) {
+          try {
+              return scanner.nextInt();
+          } catch (java.util.InputMismatchException e) {
+              System.out.println("Invalid input. Please enter a valid integer.");
+              scanner.nextLine(); // Consume the invalid input
+              return readIntFromScanner(scanner); // Retry reading
+          }
+      }
 
 ### File I/O 
- File I/O is utilized in the InvoiceGeneratorSystem class to store and retrieve invoice information in/from a file (invoice_history.txt).<br>
+File I/O is utilized to store and retrieve invoice information:
+
+    private void saveInvoiceToFile(Invoice invoice) {
+        try (FileWriter fileWriter = new FileWriter("invoice_history.txt", true);
+             PrintWriter printWriter = new PrintWriter(fileWriter)) {
+            printWriter.println(invoice);
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("Error saving invoice to file.");
+        }
+    }
+This method writes invoice information to the "invoice_history.txt" file, utilizing FileWriter and PrintWriter. A try-with-resources block ensures proper resource management.
+
 
 ### Anonymous Inner Class / Functional Interface / Lambda Expression
- A functional interface named LoginProcess is used with lambda expressions in the runSystem method to provide a flexible and concise way to handle 
-login processes.
+A lambda expression is utilized in the Authentication class to define a functional interface (LoginProcess) for user authentication:
+
+    @FunctionalInterface
+    interface LoginProcess {
+        boolean login(Scanner scanner, Map<String, ? extends User> userMap);
+    }
+
+Lambda expressions are then used for different login processes, demonstrating concise and flexible code.
+
+### Static methods
+Static methods are employed in the ElectricityInvoiceGenerator code:
+
+    public static void printUserInfo(User user) {
+     System.out.println(user);
+    }
+
+The printUserInfo method is static, allowing it to be called without creating an instance of the class. This method prints user information to the console.
+
 
 
 
