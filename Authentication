@@ -1,0 +1,45 @@
+package Electricity_InvoiceGenerator;
+import java.util.Map;
+import java.util.Scanner;
+
+public class Authentication {
+
+    // Functional Interface
+    @FunctionalInterface
+    interface LoginProcess {
+        boolean login(Scanner scanner, Map<String, ? extends User> userMap);
+    }
+
+    public static boolean authenticateUser(Scanner scanner, int choice, Map<String, ? extends User> userMap) {
+        LoginProcess loginProcess;
+
+        switch (choice) {
+            case 1:
+                loginProcess = (inputScanner, users) -> {
+                    System.out.print("Enter staff username: ");
+                    String username = inputScanner.next();
+                    System.out.print("Enter staff password: ");
+                    String password = inputScanner.next();
+
+                    Staff staff = (Staff) users.get(username);
+                    return staff != null && staff.getPassword().equals(password);
+                };
+                break;
+            case 2:
+                loginProcess = (inputScanner, users) -> {
+                    System.out.print("Enter client username: ");
+                    String username = inputScanner.next();
+                    System.out.print("Enter client password: ");
+                    String password = inputScanner.next();
+
+                    Client client = (Client) users.get(username);
+                    return client != null && client.getPassword().equals(password);
+                };
+                break;
+            default:
+                return false;
+        }
+
+        return loginProcess.login(scanner, userMap);
+    }
+}
