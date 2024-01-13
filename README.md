@@ -13,6 +13,7 @@
 - [File I/O](#file-io)
 - [Anonymous Inner Class / Functional Interface / Lambda Expression](#anonymous-inner-class--functional-interface--lambda-expression)
 - [Static methods](#static-methods)
+- [Conclusion](#conclusion)
 
 ### Features
 **1. Authentication**<br/>
@@ -192,6 +193,9 @@ Static methods are employed in the ElectricityInvoiceGenerator code:
     }
 
 The printUserInfo method is static, allowing it to be called without creating an instance of the class. This method prints user information to the console.
+
+### Conclusion
+In conclusion, the Electricity Invoice Generator System effectively applies OOP principles, providing a well-structured and maintainable codebase. The project demonstrates a comprehensive understanding of classes, inheritance, polymorphism, encapsulation, abstraction, exception handling, file I/O, lambda expressions, and static methods, contributing to a robust and efficient electricity billing solution.
 
 
 
